@@ -4,11 +4,12 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
-
+import javafx.scene.control.RadioButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -62,6 +63,14 @@ public class HelloController {
     private Text t9;
     @FXML
     private Text text;
+    @FXML
+    private RadioButton rb1;
+    @FXML
+    private RadioButton rb2;
+    @FXML
+    private RadioButton rb3;
+
+
     private static Map<Integer, Integer> map = new HashMap<Integer, Integer>();
     private Boolean player_move = true;
     public static void setMap(int position, int value){
@@ -69,6 +78,8 @@ public class HelloController {
     }
     BackgroundFill fill;
     Background pane_background;
+
+    private ToggleGroup group = new ToggleGroup();
     @FXML
     void click_cell1(MouseEvent event) {
         move(t1, 1);
@@ -125,6 +136,7 @@ public class HelloController {
             player_move = true;
         }
         check_win();
+        if (!rb1.isSelected() & !rb2.isSelected() & !rb3.isSelected()) rb1.setSelected(true);
     }
     void check_win(){
         pane_background = new Background(
@@ -229,4 +241,26 @@ public class HelloController {
         cell8.setBackground(pane_background);
         cell9.setBackground(pane_background);
     }
+
+    @FXML
+    void radio_easy(ActionEvent event) {
+        text.setText("easy");
+        rb1.setSelected(false);
+        rb3.setSelected(false);
+    }
+
+    @FXML
+    void radio_hard(ActionEvent event) {
+        text.setText("hard");
+        rb1.setSelected(false);
+        rb2.setSelected(false);
+    }
+
+    @FXML
+    void radio_two(ActionEvent event) {
+        text.setText("two");
+        rb2.setSelected(false);
+        rb3.setSelected(false);
+    }
+
 }

@@ -18,6 +18,7 @@ public class HelloApplication extends Application {
         fill_map();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 700);
+
         stage.setResizable(false);
         stage.setScene(scene);
         stage.setTitle("TicTacToe");

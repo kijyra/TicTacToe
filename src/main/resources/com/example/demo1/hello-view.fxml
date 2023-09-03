@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -106,9 +108,9 @@
             </Pane>
          </children>
       </GridPane>
-      <Text fx:id="text" fill="#107605" fontSmoothingType="LCD" layoutX="134.0" layoutY="666.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="462.3999878168107">
+      <Text fx:id="text" fill="#107605" fontSmoothingType="LCD" layoutX="156.0" layoutY="666.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="287.2000366449357">
          <font>
-            <Font name="Times New Roman" size="56.0" />
+            <Font name="Times New Roman" size="47.0" />
          </font>
       </Text>
       <Button fx:id="button_new_game" layoutX="14.0" layoutY="610.0" mnemonicParsing="false" onAction="#new_game" prefHeight="74.0" prefWidth="120.0" text="Новая игра">
@@ -116,5 +118,12 @@
             <Font size="16.0" />
          </font>
       </Button>
+      <VBox layoutX="480.0" layoutY="601.0" prefHeight="98.0" prefWidth="120.0">
+         <children>
+            <RadioButton fx:id="rb1" mnemonicParsing="false" onAction="#radio_two" prefHeight="34.0" prefWidth="120.0" text="На двоих" />
+            <RadioButton fx:id="rb2" mnemonicParsing="false" onAction="#radio_easy" prefHeight="34.0" prefWidth="120.0" text="Лёгкий" />
+            <RadioButton fx:id="rb3" mnemonicParsing="false" onAction="#radio_hard" prefHeight="34.0" prefWidth="120.0" text="Сложный" />
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
