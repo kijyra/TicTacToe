@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.HelloController">
+   <children>
+      <GridPane gridLinesVisible="true" prefHeight="600.0" prefWidth="600.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Pane fx:id="cell1" onMouseClicked="#click_cell1" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Text fx:id="t1" layoutX="72.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font size="96.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Pane fx:id="cell2" onMouseClicked="#click_cell2" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+               <children>
+                  <Text fx:id="t2" layoutX="72.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font size="96.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Pane fx:id="cell3" onMouseClicked="#click_cell3" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
+               <children>
+                  <Text fx:id="t3" layoutX="72.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font size="96.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Pane fx:id="cell4" onMouseClicked="#click_cell4" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+               <children>
+                  <Text fx:id="t4" layoutX="72.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font size="96.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Pane fx:id="cell5" onMouseClicked="#click_cell5" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <Text fx:id="t5" layoutX="72.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font size="96.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Pane fx:id="cell6" onMouseClicked="#click_cell6" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <children>
+                  <Text fx:id="t6" layoutX="72.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font size="96.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Pane fx:id="cell7" onMouseClicked="#click_cell7" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+               <children>
+                  <Text fx:id="t7" layoutX="71.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font size="96.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Pane fx:id="cell8" onMouseClicked="#click_cell8" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <children>
+                  <Text fx:id="t8" layoutX="73.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font size="96.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Pane fx:id="cell9" onMouseClicked="#click_cell9" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <children>
+                  <Text fx:id="t9" layoutX="69.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font size="96.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+         </children>
+      </GridPane>
+      <Text fx:id="text" fill="#107605" fontSmoothingType="LCD" layoutX="134.0" layoutY="666.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="462.3999878168107">
+         <font>
+            <Font name="Times New Roman" size="56.0" />
+         </font>
+      </Text>
+      <Button fx:id="button_new_game" layoutX="14.0" layoutY="610.0" mnemonicParsing="false" onAction="#new_game" prefHeight="74.0" prefWidth="120.0" text="Новая игра">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
