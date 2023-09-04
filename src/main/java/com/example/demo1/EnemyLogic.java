@@ -8,16 +8,16 @@ public class EnemyLogic {
     static HashMap<Integer, Integer> map = new HashMap<>();
 
     public static int easy(){
-        int i, r;
-        Random random = new Random();
-        r = random.nextInt(1, 9);
-        for (i = 1; i <= 9; i++){
-            if (HelloController.getMap(i) > 2) {
-                random.nextInt(1, 9);
-                HelloController.setMap(r, o);
-            }
-        }
-        return r;
+         int i, r = 0;
+         Random random = new Random();
+         for (i = 1; i <= 1024; i++) {
+             r = random.nextInt(1, 9);
+             if (HelloController.getMap(r) > 2) {
+                 HelloController.setMap(r, o);
+                 i = 1025;
+             }
+         }
+         return r;
     }
 
     public static int hard(){
