@@ -70,6 +70,7 @@ public class HelloController {
     Background pane_background;
     Integer turn = 0;
     public static Boolean game_started = false;
+    public static Integer counter = 0;
 
     @FXML
     void click_cell1() {
@@ -122,12 +123,14 @@ public class HelloController {
                     t.setFill(Color.RED);
                     map.put(cell_number,1);
                     player_move = false;
+                    counter++;
                 }
                 else if (checkMove(cell_number) == 1){
                     t.setText("O");
                     t.setFill(Color.BLUE);
                     map.put(cell_number,2);
                     player_move = true;
+                    counter++;
                 }
                 break;
             case (1):
@@ -136,9 +139,11 @@ public class HelloController {
                     t.setFill(Color.RED);
                     map.put(cell_number,1);
                     player_move = false;
+                    counter++;
                     if (game_started) {
                         paint_field(EnemyLogic.easy());
                         player_move = true;
+                        counter++;
                     }
                 }
                 break;
@@ -148,9 +153,11 @@ public class HelloController {
                     t.setFill(Color.RED);
                     map.put(cell_number,1);
                     player_move = false;
+                    counter++;
                     if (game_started) {
                         paint_field(EnemyLogic.hard());
                         player_move = true;
+                        counter++;
                     }
                 }
                 break;
@@ -237,6 +244,7 @@ public class HelloController {
             text.setText("Ничья");
             game_started = false;
             paint_field("#2F4F4F");
+            counter = 0;
         }
         else if (player_move) text.setText("Ход игрока Х");
         else text.setText("Ход игрока О");
@@ -248,6 +256,7 @@ public class HelloController {
         game_started = false;
         if (map.get(first_cell) == 1) text.setText("Победа Х");
         else text.setText("Победа О");
+        counter = 0;
     }
     @FXML
     void new_game() {
@@ -268,6 +277,7 @@ public class HelloController {
         else if (rb3.isSelected()) turn = 2;
         player_move = true;
         game_started = true;
+        counter = 0;
     }
     void paint_field(String color){
         pane_background = new Background(
