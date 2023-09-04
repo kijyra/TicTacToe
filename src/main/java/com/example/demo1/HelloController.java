@@ -1,16 +1,10 @@
 package com.example.demo1;
 
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.ResourceBundle;
 import javafx.scene.control.RadioButton;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
-import javafx.scene.control.ToggleGroup;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
@@ -19,12 +13,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 public class HelloController {
-    @FXML
-    private Button button_new_game;
-    @FXML
-    private ResourceBundle resources;
-    @FXML
-    private URL location;
     @FXML
     private Pane cell1;
     @FXML
@@ -71,49 +59,51 @@ public class HelloController {
     private RadioButton rb3;
 
 
-    private static Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+    private final static Map<Integer, Integer> map = new HashMap<Integer, Integer>();
     private Boolean player_move = true;
     public static void setMap(int position, int value){
         map.put(position,value);
     }
-    BackgroundFill fill;
+    public static int getMap(int position){
+        return map.get(position);
+    }
     Background pane_background;
+    Integer turn = 0;
 
-    private ToggleGroup group = new ToggleGroup();
     @FXML
-    void click_cell1(MouseEvent event) {
+    void click_cell1() {
         move(t1, 1);
     }
     @FXML
-    void click_cell2(MouseEvent event) {
+    void click_cell2() {
         move(t2, 2);
     }
     @FXML
-    void click_cell3(MouseEvent event) {
+    void click_cell3() {
         move(t3, 3);
     }
     @FXML
-    void click_cell4(MouseEvent event) {
+    void click_cell4() {
         move(t4, 4);
     }
     @FXML
-    void click_cell5(MouseEvent event) {
+    void click_cell5() {
         move(t5, 5);
     }
     @FXML
-    void click_cell6(MouseEvent event) {
+    void click_cell6() {
         move(t6, 6);
     }
     @FXML
-    void click_cell7(MouseEvent event) {
+    void click_cell7() {
         move(t7, 7);
     }
     @FXML
-    void click_cell8(MouseEvent event) {
+    void click_cell8() {
         move(t8, 8);
     }
     @FXML
-    void click_cell9(MouseEvent event) {
+    void click_cell9() {
         move(t9, 9);
     }
 //  0 - player move || 1 - enemy move || 2 - not move
@@ -123,28 +113,99 @@ public class HelloController {
         else return 2;
     }
     void move(Text t, int cell_number){
-        if (checkMove(cell_number) == 0) {
-            t.setText("X");
-            t.setFill(Color.RED);
-            map.put(cell_number,1);
-            player_move = false;
+        switch (turn){
+            case (0):
+                if (checkMove(cell_number) == 0) {
+                    t.setText("X");
+                    t.setFill(Color.RED);
+                    map.put(cell_number,1);
+                    player_move = false;
+                }
+                else if (checkMove(cell_number) == 1){
+                    t.setText("O");
+                    t.setFill(Color.BLUE);
+                    map.put(cell_number,2);
+                    player_move = true;
+                }
+                break;
+            case (1):
+                if (checkMove(cell_number) == 0) {
+                    t.setText("X");
+                    t.setFill(Color.RED);
+                    map.put(cell_number,1);
+                    player_move = false;
+                }
+                else{
+                    paint_field(EnemyLogic.easy());
+                    player_move = true;
+                }
+                break;
+            case (2):
+                if (checkMove(cell_number) == 0) {
+                    t.setText("X");
+                    t.setFill(Color.RED);
+                    map.put(cell_number,1);
+                    player_move = false;
+                }
+                else{
+                    paint_field(EnemyLogic.hard());
+                    player_move = true;
+                }
+                break;
         }
-        else if (checkMove(cell_number) == 1){
-            t.setText("O");
-            t.setFill(Color.BLUE);
-            map.put(cell_number,2);
-            player_move = true;
-        }
+
         check_win();
         if (!rb1.isSelected() & !rb2.isSelected() & !rb3.isSelected()) rb1.setSelected(true);
     }
+
+    void paint_field(int cell){
+        switch (cell){
+            case 1:
+                t1.setText("O");
+                t1.setFill(Color.BLUE);
+                break;
+            case 2:
+                t2.setText("O");
+                t2.setFill(Color.BLUE);
+                break;
+            case 3:
+                t3.setText("O");
+                t3.setFill(Color.BLUE);
+                break;
+            case 4:
+                t4.setText("O");
+                t4.setFill(Color.BLUE);
+                break;
+            case 5:
+                t5.setText("O");
+                t5.setFill(Color.BLUE);
+                break;
+            case 6:
+                t6.setText("O");
+                t6.setFill(Color.BLUE);
+                break;
+            case 7:
+                t7.setText("O");
+                t7.setFill(Color.BLUE);
+                break;
+            case 8:
+                t8.setText("O");
+                t8.setFill(Color.BLUE);
+                break;
+            case 9:
+                t9.setText("O");
+                t9.setFill(Color.BLUE);
+                break;
+        }
+    }
+
     void check_win(){
         pane_background = new Background(
                 new BackgroundFill(Color.valueOf("#006400"),
                         new CornerRadii(10),
                         new Insets(10))
         );
-        if (map.get(1) == map.get(2) & map.get(1) == map.get(3))
+        if (map.get(1).equals(map.get(2)) & map.get(1).equals(map.get(3)))
         {
             cell1.setBackground(pane_background);
             cell2.setBackground(pane_background);
@@ -152,49 +213,49 @@ public class HelloController {
             if (map.get(1) == 1) text.setText("X WON");
             else text.setText("O WON");
         }
-        else if (map.get(4) == map.get(5) & map.get(4) == map.get(6))        {
+        else if (map.get(4).equals(map.get(5)) & map.get(4).equals(map.get(6)))        {
             cell4.setBackground(pane_background);
             cell5.setBackground(pane_background);
             cell6.setBackground(pane_background);
             if (map.get(4) == 1) text.setText("X WON");
             else text.setText("O WON");
         }
-        else if (map.get(7) == map.get(8) & map.get(7) == map.get(9)){
+        else if (map.get(7).equals(map.get(8)) & map.get(7).equals(map.get(9))){
             cell7.setBackground(pane_background);
             cell8.setBackground(pane_background);
             cell9.setBackground(pane_background);
             if (map.get(7) == 1) text.setText("X WON");
             else text.setText("O WON");
         }
-        else if (map.get(1) == map.get(4) & map.get(1) == map.get(7)){
+        else if (map.get(1).equals(map.get(4)) & map.get(1).equals(map.get(7))){
             cell7.setBackground(pane_background);
             cell1.setBackground(pane_background);
             cell4.setBackground(pane_background);
             if (map.get(7) == 1) text.setText("X WON");
             else text.setText("O WON");
         }
-        else if (map.get(2) == map.get(5) & map.get(2) == map.get(8)){
+        else if (map.get(2).equals(map.get(5)) & map.get(2).equals(map.get(8))){
             cell2.setBackground(pane_background);
             cell5.setBackground(pane_background);
             cell8.setBackground(pane_background);
             if (map.get(2) == 1) text.setText("X WON");
             else text.setText("O WON");
         }
-        else if (map.get(3) == map.get(6) & map.get(3) == map.get(9)){
+        else if (map.get(3).equals(map.get(6)) & map.get(3).equals(map.get(9))){
             cell3.setBackground(pane_background);
             cell6.setBackground(pane_background);
             cell9.setBackground(pane_background);
             if (map.get(2) == 1) text.setText("X WON");
             else text.setText("O WON");
         }
-        else if (map.get(1) == map.get(5) & map.get(1) == map.get(9)){
+        else if (map.get(1).equals(map.get(5)) & map.get(1).equals(map.get(9))){
             cell1.setBackground(pane_background);
             cell5.setBackground(pane_background);
             cell9.setBackground(pane_background);
             if (map.get(1) == 1) text.setText("X WON");
             else text.setText("O WON");
         }
-        else if (map.get(3) == map.get(5) & map.get(3) == map.get(7)){
+        else if (map.get(3).equals(map.get(5)) & map.get(3).equals(map.get(7))){
             cell3.setBackground(pane_background);
             cell5.setBackground(pane_background);
             cell7.setBackground(pane_background);
@@ -211,7 +272,7 @@ public class HelloController {
         else text.setText("Ход игрока О");
     }
     @FXML
-    void new_game(ActionEvent event) {
+    void new_game() {
         HelloApplication.fill_map();
         t1.setText("");
         t2.setText("");
@@ -224,6 +285,9 @@ public class HelloController {
         t9.setText("");
         paint_field("#FFFFFF");
         text.setText("Ход игрока Х");
+        if (rb1.isSelected()) turn = 0;
+        else if (rb2.isSelected()) turn = 1;
+        else if (rb3.isSelected()) turn = 2;
     }
     void paint_field(String color){
         pane_background = new Background(
@@ -243,24 +307,27 @@ public class HelloController {
     }
 
     @FXML
-    void radio_easy(ActionEvent event) {
+    void radio_easy() {
         text.setText("easy");
         rb1.setSelected(false);
         rb3.setSelected(false);
+        turn = 1;
     }
 
     @FXML
-    void radio_hard(ActionEvent event) {
+    void radio_hard() {
         text.setText("hard");
         rb1.setSelected(false);
         rb2.setSelected(false);
+        turn = 2;
     }
 
     @FXML
-    void radio_two(ActionEvent event) {
+    void radio_two() {
         text.setText("two");
         rb2.setSelected(false);
         rb3.setSelected(false);
+        turn = 0;
     }
 
 }

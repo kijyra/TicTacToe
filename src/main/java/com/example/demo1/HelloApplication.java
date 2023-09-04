@@ -1,16 +1,10 @@
 package com.example.demo1;
 
 import javafx.application.Application;
-import javafx.event.EventType;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-
 import java.io.IOException;
-import java.security.cert.X509Certificate;
 
 public class HelloApplication extends Application {
     @Override
@@ -18,7 +12,6 @@ public class HelloApplication extends Application {
         fill_map();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 700);
-
         stage.setResizable(false);
         stage.setScene(scene);
         stage.setTitle("TicTacToe");
