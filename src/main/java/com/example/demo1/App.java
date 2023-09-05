@@ -7,6 +7,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class App extends Application {
+    int i;
     @Override
     public void start(Stage stage) throws IOException {
         fill_map();
