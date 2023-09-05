@@ -12,8 +12,8 @@ public class EnemyLogic {
          int i, r = 0;
          for (i = 1; i <= 1024; i++) {
              r = random.nextInt(1, 9);
-             if (HelloController.getMap(r) > 2) {
-                 HelloController.setMap(r, o);
+             if (Controller.getMap(r) > 2) {
+                 Controller.setMap(r, o);
                  i = 1025;
              }
          }
@@ -21,20 +21,20 @@ public class EnemyLogic {
     }
 
     public static int hard(){
-        int r;
-        switch (HelloController.counter) {
+        int r; System.out.println(Controller.counter);
+        switch (Controller.counter) {
             case 1:
-                if (HelloController.getMap(5) > 3) {
-                    HelloController.setMap(5, o);
+                if (Controller.getMap(5) > 3) {
+                    Controller.setMap(5, o);
                     return 5;
                 }
-                else if (HelloController.getMap(5) == 1) {
+                else if (Controller.getMap(5) == 1) {
                     r = random.nextInt(1,4);
                     switch (r){
-                        case 1: HelloController.setMap(1, o); return 1;
-                        case 2: HelloController.setMap(3, o); return 3;
-                        case 3: HelloController.setMap(7, o); return 7;
-                        case 4: HelloController.setMap(9, o); return 9;
+                        case 1: Controller.setMap(1, o); return 1;
+                        case 2: Controller.setMap(3, o); return 3;
+                        case 3: Controller.setMap(7, o); return 7;
+                        case 4: Controller.setMap(9, o); return 9;
                     }
                 }
                 break;

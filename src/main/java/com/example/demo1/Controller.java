@@ -12,7 +12,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
-public class HelloController {
+public class Controller {
     @FXML
     private Pane cell1;
     @FXML
@@ -140,6 +140,7 @@ public class HelloController {
                     map.put(cell_number,1);
                     player_move = false;
                     counter++;
+                    check_win();
                     if (game_started) {
                         paint_field(EnemyLogic.easy());
                         player_move = true;
@@ -154,6 +155,7 @@ public class HelloController {
                     map.put(cell_number,1);
                     player_move = false;
                     counter++;
+                    check_win();
                     if (game_started) {
                         paint_field(EnemyLogic.hard());
                         player_move = true;
@@ -260,7 +262,7 @@ public class HelloController {
     }
     @FXML
     void new_game() {
-        HelloApplication.fill_map();
+        App.fill_map();
         t1.setText("");
         t2.setText("");
         t3.setText("");
