@@ -1,7 +1,8 @@
-package com.example.demo1;
+package com.example.demo1.controllers.tictactoe;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import javafx.scene.control.RadioButton;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -12,7 +13,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
-public class Controller {
+public class Control {
     @FXML
     private Pane cell1;
     @FXML
@@ -212,7 +213,7 @@ public class Controller {
 
     void check_win(){
         pane_background = new Background(
-                new BackgroundFill(Color.valueOf("#006400"),
+                new BackgroundFill(Color.valueOf("#48D1CC"),
                         new CornerRadii(10),
                         new Insets(10))
         );
@@ -245,7 +246,7 @@ public class Controller {
                 map.get(7) <= 2 & map.get(8) <= 2 & map.get(9) <= 2) {
             text.setText("Ничья");
             game_started = false;
-            paint_field("#2F4F4F");
+            paint_field("#B0C4DE");
             counter = 0;
         }
         else if (player_move) text.setText("Ход игрока Х");
@@ -260,9 +261,23 @@ public class Controller {
         else text.setText("Победа О");
         counter = 0;
     }
+
+    public static void fill_map(){
+//      0 - empty; 1 - X; 2 - O
+        setMap(1, 3);
+        setMap(2, 4);
+        setMap(3, 5);
+        setMap(4, 6);
+        setMap(5, 7);
+        setMap(6, 8);
+        setMap(7, 9);
+        setMap(8, 10);
+        setMap(9, 11);
+    }
+
     @FXML
     void new_game() {
-        App.fill_map();
+        fill_map();
         t1.setText("");
         t2.setText("");
         t3.setText("");
@@ -301,6 +316,7 @@ public class Controller {
     @FXML
     void radio_easy() {
         if (!game_started) {
+            fill_map();
             text.setText("easy mode");
             rb1.setSelected(false);
             rb3.setSelected(false);
@@ -312,6 +328,7 @@ public class Controller {
     @FXML
     void radio_hard() {
         if (!game_started) {
+            fill_map();
             text.setText("hard");
             rb1.setSelected(false);
             rb2.setSelected(false);
@@ -323,6 +340,7 @@ public class Controller {
     @FXML
     void radio_two() {
         if (!game_started) {
+            fill_map();
             text.setText("two");
             rb2.setSelected(false);
             rb3.setSelected(false);
@@ -330,5 +348,4 @@ public class Controller {
             game_started = true;
         } else rb1.setSelected(false);
     }
-
 }

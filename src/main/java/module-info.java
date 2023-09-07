@@ -8,5 +8,10 @@ module com.example.demo1 {
                 requires com.almasb.fxgl.all;
     
     opens com.example.demo1 to javafx.fxml;
+
     exports com.example.demo1;
+    exports com.example.demo1.controllers.tetris;
+    opens com.example.demo1.controllers.tetris to javafx.fxml;
+    exports com.example.demo1.controllers.tictactoe;
+    opens com.example.demo1.controllers.tictactoe to javafx.fxml;
 }

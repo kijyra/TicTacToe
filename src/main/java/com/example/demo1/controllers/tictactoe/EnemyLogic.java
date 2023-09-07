@@ -1,4 +1,4 @@
-package com.example.demo1;
+package com.example.demo1.controllers.tictactoe;
 
 import java.util.HashMap;
 import java.util.Random;
@@ -12,8 +12,8 @@ public class EnemyLogic {
          int i;
          for (i = 1; i <= 1024; i++) {
              r = random.nextInt(1, 9);
-             if (Controller.getMap(r) > 2) {
-                 Controller.setMap(r, o);
+             if (Control.getMap(r) > 2) {
+                 Control.setMap(r, o);
                  i = 1025;
              }
          }
@@ -21,23 +21,23 @@ public class EnemyLogic {
     }
 
     static boolean isEmpty(int cell){
-        if (Controller.getMap(cell) >= 3)return true;
+        if (Control.getMap(cell) >= 3)return true;
         else return false;
     }
     static boolean isPlayer(int cell1, int cell2, int cell3){
-        if (Controller.getMap(cell1) == 1 & Controller.getMap(cell2) == 1 & !(Controller.getMap(cell3) == 2)) return true;
+        if (Control.getMap(cell1) == 1 & Control.getMap(cell2) == 1 & !(Control.getMap(cell3) == 2)) return true;
         else return false;
     }
     static boolean isEnemy(int cell1, int cell2, int cell3){
-        if (Controller.getMap(cell1) == 2 & Controller.getMap(cell2) == 2 & !(Controller.getMap(cell3) == 1)) return true;
+        if (Control.getMap(cell1) == 2 & Control.getMap(cell2) == 2 & !(Control.getMap(cell3) == 1)) return true;
         else return false;
     }
     static void move(int cell){
-        Controller.setMap(cell,o);
+        Control.setMap(cell,o);
     }
     public static int hard(){
-        System.out.println(Controller.counter);
-        switch (Controller.counter) {
+        System.out.println(Control.counter);
+        switch (Control.counter) {
             case 1:
                 if (isEmpty(5)) { move(5); returned = 5; }
                 else {
@@ -113,9 +113,9 @@ public class EnemyLogic {
                     else returned = easy();
                 break;
         }
-        System.out.println(Controller.getMap(1) + "||" + Controller.getMap(2) + "||" +  Controller.getMap(3));
-        System.out.println(Controller.getMap(4) + "||" + Controller.getMap(5) + "||" +  Controller.getMap(6));
-        System.out.println(Controller.getMap(7) + "||" + Controller.getMap(8) + "||" +  Controller.getMap(9));
+        System.out.println(Control.getMap(1) + "||" + Control.getMap(2) + "||" +  Control.getMap(3));
+        System.out.println(Control.getMap(4) + "||" + Control.getMap(5) + "||" +  Control.getMap(6));
+        System.out.println(Control.getMap(7) + "||" + Control.getMap(8) + "||" +  Control.getMap(9));
         System.out.println("Ход в ячейку " + returned);
         return returned;
     }

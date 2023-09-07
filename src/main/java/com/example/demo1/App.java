@@ -7,30 +7,21 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class App extends Application {
-    int i;
+    private static int selectedGame = 0;
+    public void setSelectedGame(int num){
+        selectedGame = num;
+    }
+    public int getSelectedGame(){
+        return selectedGame;
+    }
     @Override
     public void start(Stage stage) throws IOException {
-        fill_map();
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("main_view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 600, 700);
+        FXMLLoader mainLoader = new FXMLLoader(App.class.getResource("mainView.fxml"));
+        Scene mainScene = new Scene(mainLoader.load(), 250, 400);
         stage.setResizable(false);
-        stage.setScene(scene);
-        stage.setTitle("TicTacToe");
+        stage.setScene(mainScene);
+        stage.setTitle("Games");
         stage.show();
-    }
-
-    public static void fill_map(){
-//      0 - empty; 1 - X; 2 - O
-        Controller.setMap(1, 3);
-        Controller.setMap(2, 4);
-        Controller.setMap(3, 5);
-        Controller.setMap(4, 6);
-        Controller.setMap(5, 7);
-        Controller.setMap(6, 8);
-        Controller.setMap(7, 9);
-        Controller.setMap(8, 10);
-        Controller.setMap(9, 11);
-
     }
 
     public static void main(String[] args) {
