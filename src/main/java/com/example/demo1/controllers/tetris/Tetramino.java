@@ -36,6 +36,117 @@ public class Tetramino {
             return currentCell;
         } else return currentCell;
     }
+
+    public void moveToLeft(){
+        for (int i = 0; i <= 7; i = i + 2) {
+            if (xy[i] != 0) xy[i] -= 1;
+            else {
+                switch (tetramino) {
+                    case 'I':
+                        xy[0] = 0;
+                        xy[2] = 0;
+                        xy[4] = 0;
+                        xy[6] = 0;
+                        break;
+                    case 'J':
+                        xy[0] = 1;
+                        xy[2] = 1;
+                        xy[4] = 1;
+                        xy[6] = 0;
+                        break;
+                    case 'L':
+                        xy[0] = 0;
+                        xy[2] = 0;
+                        xy[4] = 0;
+                        xy[6] = 1;
+                        break;
+                    case 'O':
+                        xy[0] = 0;
+                        xy[2] = 0;
+                        xy[4] = 1;
+                        xy[6] = 1;
+                        break;
+                    case 'S':
+                        xy[0] = 1;
+                        xy[2] = 2;
+                        xy[4] = 1;
+                        xy[6] = 0;
+                        break;
+                    case 'T':
+                        xy[0] = 0;
+                        xy[2] = 1;
+                        xy[4] = 2;
+                        xy[6] = 1;
+                        break;
+                    case 'Z':
+                        xy[0] = 1;
+                        xy[2] = 0;
+                        xy[4] = 1;
+                        xy[6] = 2;
+                        break;
+                }
+                i = 7;
+            }
+        }
+    }
+    public void moveToRight(){
+        for (int i = 0; i <= 7; i = i + 2) {
+            if (xy[i] != 9 ) xy[i] += 1;
+            else {
+                switch (tetramino){
+                    case 'I':
+                        xy[0] = 9;
+                        xy[2] = 9;
+                        xy[4] = 9;
+                        xy[6] = 9;
+                        break;
+                    case 'J':
+                        xy[0] = 8;
+                        xy[2] = 8;
+                        xy[4] = 8;
+                        xy[6] = 9;
+                        break;
+                    case 'L':
+                        xy[0] = 9;
+                        xy[2] = 9;
+                        xy[4] = 9;
+                        xy[6] = 8;
+                        break;
+                    case 'O':
+                        xy[0] = 8;
+                        xy[2] = 8;
+                        xy[4] = 9;
+                        xy[6] = 9;
+                        break;
+                    case 'S':
+                        xy[0] = 8;
+                        xy[2] = 9;
+                        xy[4] = 8;
+                        xy[6] = 7;
+                        break;
+                    case 'T':
+                        xy[0] = 7;
+                        xy[2] = 8;
+                        xy[4] = 9;
+                        xy[6] = 8;
+                        break;
+                    case 'Z':
+                        xy[0] = 8;
+                        xy[2] = 7;
+                        xy[4] = 8;
+                        xy[6] = 9;
+                        break;
+                }
+                i = 10;
+            }
+        }
+    }
+    public void move(){
+        xy[1] += 1;
+        xy[3] += 1;
+        xy[5] += 1;
+        xy[7] += 1;
+    }
     public static String getColor(){
         return color;
     }

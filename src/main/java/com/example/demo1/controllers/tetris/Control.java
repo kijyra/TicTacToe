@@ -13,6 +13,8 @@ public class Control {
     private GridPane grid;
     private static Rectangle[][] field = new Rectangle[10][20];
     private Color transparent = new Color(0f,0f,0f,0f );
+    private Tetramino currentTetramino;
+    private Tetramino[] tetramino[];
 
 
     @FXML
@@ -44,43 +46,59 @@ public class Control {
         switch (event.getCode()){
             case I:
                 Tetramino.makeI();
-                Tetramino i = new Tetramino();
-                print(i);
+                currentTetramino = new Tetramino();
+                print(currentTetramino);
                 break;
             case J:
                 Tetramino.makeJ();
-                Tetramino j = new Tetramino();
-                print(j);
+                currentTetramino = new Tetramino();
+                print(currentTetramino);
                 break;
             case L:
                 Tetramino.makeL();
-                Tetramino l = new Tetramino();
-                print(l);
+                currentTetramino = new Tetramino();
+                print(currentTetramino);
                 break;
             case O:
                 Tetramino.makeO();
-                Tetramino o = new Tetramino();
-                print(o);
+                currentTetramino = new Tetramino();
+                print(currentTetramino);
                 break;
             case S:
                 Tetramino.makeS();
-                Tetramino s = new Tetramino();
-                print(s);
+                currentTetramino = new Tetramino();
+                print(currentTetramino);
                 break;
             case T:
                 Tetramino.makeT();
-                Tetramino t = new Tetramino();
-                print(t);
+                currentTetramino = new Tetramino();
+                print(currentTetramino);
                 break;
             case Z:
                 Tetramino.makeZ();
-                Tetramino z = new Tetramino();
-                print(z);
+                currentTetramino = new Tetramino();
+                print(currentTetramino);
+                break;
+            case A:
+                erase(currentTetramino);
+                currentTetramino.moveToLeft();
+                print(currentTetramino);
+                break;
+            case D:
+                erase(currentTetramino);
+                currentTetramino.moveToRight();
+                print(currentTetramino);
                 break;
         }
     }
+
+    private static void erase(Tetramino tetramino){
+        for (int i = 1; i <= 4; i++) {
+            field[Tetramino.getCoord(i)[0]][tetramino.getCoord(i)[1]].setFill(Color.TRANSPARENT);
+        }
+    }
     private static void print(Tetramino tetramino){
-        for (int i = 0; i <= 4; i++) {
+        for (int i = 1; i <= 4; i++) {
             field[Tetramino.getCoord(i)[0]][tetramino.getCoord(i)[1]].setFill(Paint.valueOf(Tetramino.getColor()));
         }
     }
